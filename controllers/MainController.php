@@ -2,6 +2,7 @@
 
 require(__DIR__ . '/../helpers/ViewHelper.php');
 require(__DIR__ . '/../models/Enquiry.php');
+require(__DIR__ . '/../config.php');
 
 class MainController {
 
@@ -41,8 +42,14 @@ class MainController {
      */
     public function processEnquiryForm() {
         $enquiryModel = new Enquiry();
+
+        // Test the DB connection
         $test = $enquiryModel->testConnection();
-        var_dump('DB Connection test successfuly - ' . $test->num_rows . ' rows returned');
+        echo('DB Connection test successfuly - ' . $test->num_rows . ' rows returned<br />');
+
+        // Get the email recipients
+        $recipients = $GLOBALS['email'];
+        var_dump($recipients);
     }
 
 

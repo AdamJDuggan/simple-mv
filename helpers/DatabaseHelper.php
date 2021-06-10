@@ -1,15 +1,14 @@
 <?php
+require(__DIR__ . '/../config.php');
 
 class DataBaseHelper
 {
-    protected static $hostname = 'localhost';
-    protected static $database = 'simplemvc';
-    protected static $username = 'root';
-    protected static $password = 'root';
 
-	public static function getConnection()
+    public static function getConnection()
 	{
-        $conn = mysqli_connect(self::$hostname, self::$username, self::$password, self::$database);
+        $db = $GLOBALS['database'];
+        $conn = mysqli_connect($db['hostname'], $db['username'], $db['password'], $db['database']);
+
         if (!$conn) {
             return 'connection error: ' . mysqli_connect_error($conn);
         } else {
