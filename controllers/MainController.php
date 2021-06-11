@@ -6,8 +6,20 @@ require(__DIR__ . '/../config.php');
 
 class MainController {
 
+    /**
+     * Render the homepage
+     *
+     * This is an example of how to pass
+     * variables to a view using the
+     * optional second parameter
+     * of the ViewHelper::get method
+     */
     public function renderHomePage () {
-        return ViewHelper::get('home');
+        $viewVars = [
+            'title' => 'This is the homepage',
+            'intro' => 'This is some intro text which is passed to the view as a variable'
+        ];
+        return ViewHelper::get('home', $viewVars);
     }
 
     public function renderError ($error) {
@@ -44,6 +56,14 @@ class MainController {
         $enquiryModel = new Enquiry();
 
         // Test the DB connection
+        //
+        // Note - whilst this test
+        // uses an echo statement to
+        // output the results of this
+        // test, in production code
+        // you should never render
+        // any HTML from a controller,
+        // this is the job of a view
         $test = $enquiryModel->testConnection();
         echo('DB Connection test successfuly - ' . $test->num_rows . ' rows returned<br />');
 
