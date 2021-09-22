@@ -13,7 +13,7 @@ The aim of this task is to create a simple enquiry management system. This will 
 - An enquiry form where a user can enter their first name, last name, email address and enquiry text.
 - When submitted the data from the form is saved to a database table and then a confirmation message displayed to the user.
 - An email should also be sent to a pre-defined address (set in the config.php file). The email should contain the submitted data and an ID reference to its row in the database.
-(For the purpose of the test you don’t need to actually send an email, just create a method which receives all the required data and renders this as a view).
+(For the purpose of the test you don’t need to actually send an email, just create a method which receives all the required data and renders this using a view).
 
 ### List of enquiries
 - A table view which list all enquiries which have been submitted.
