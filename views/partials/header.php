@@ -13,5 +13,5 @@
   <nav class="navbar navbar-light bg-light justify-content-between">
     <a class="navbar-brand" href="/">Home</a>
     <a class="navbar-brand" href="/render-enquiry-form">Enquiry form</a>
-    <a class="navbar-brand" href="#">View enquiries</a>
+    <a class="navbar-brand" href="/render-enquiry-table">View enquiries</a>
   </nav>

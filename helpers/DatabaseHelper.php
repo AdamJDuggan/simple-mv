@@ -3,12 +3,10 @@ require(__DIR__ . '/../config.php');
 
 class DataBaseHelper
 {
-
     public static function getConnection()
 	{
         $db = $GLOBALS['database'];
         $conn = mysqli_connect($db['hostname'], $db['username'], $db['password'], $db['database']);
-
         if (!$conn) {
             return 'connection error: ' . mysqli_connect_error($conn);
         } else {

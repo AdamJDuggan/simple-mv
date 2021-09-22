@@ -22,6 +22,13 @@ class MainController {
         return ViewHelper::get('home', $viewVars);
     }
 
+    /**
+     * Render an error message
+     *
+     * @param string $error The error code / message
+     *
+     * @return string rendered view
+     */
     public function renderError ($error) {
         return ViewHelper::get($error);
     }
@@ -31,6 +38,7 @@ class MainController {
      * The form HTML needs to be added to the
      * 'enquiry-form' view
      *
+     * @return string rendered view
      */
     public function renderEnquiryForm () {
         return ViewHelper::get('enquiry-form');
@@ -61,8 +69,8 @@ class MainController {
         // uses an echo statement to
         // output the results of this
         // test, in production code
-        // you should never render
-        // any HTML from a controller,
+        // you should *never* render
+        // any HTML in a controller,
         // this is the job of a view
         $test = $enquiryModel->testConnection();
         echo('DB Connection test successfuly - ' . $test->num_rows . ' rows returned<br />');
@@ -70,6 +78,28 @@ class MainController {
         // Get the email recipients
         $recipients = $GLOBALS['email'];
         var_dump($recipients);
+    }
+
+    /**
+     * This is the method which renders the list of enquiries
+     * The table HTML needs to be added to the
+     * 'enquiry-table' view
+     *
+     * @return string rendered view
+     */
+    public function renderEnquiryTable() {
+        return ViewHelper::get('enquiry-table');
+    }
+
+    /**
+     * Render the form to edit an entry
+     *
+     * You will need to know which entry to
+     * edit so you can use a GET param
+     * to pass this in: e.g. /render-edit-enquiry-form?id=1
+     */
+    public function renderEditEnquiry() {
+        die('Render Edit Enquiry Form for entry');
     }
 
 

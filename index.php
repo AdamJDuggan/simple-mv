@@ -19,6 +19,16 @@ switch ($request) {
         echo $controller->processEnquiryForm();
         break;
 
+    case '/render-enquiry-table':
+        echo $controller->renderEnquiryTable();
+        break;
+
+    case '/render-edit-enquiry-form':
+        echo $controller->renderEditEnquiry();
+        break;
+
+    // Additional routes can be added here
+
     default:
         http_response_code(404);
         echo $controller->renderError('404');

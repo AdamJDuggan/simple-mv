@@ -9,7 +9,7 @@ class ViewHelper
      * @param string $viewName
      * @param array $vars
      *
-     * @return string
+     * @return string Rendered HTML
      */
     public static function get(string $viewName, array $vars = [])
 	{
