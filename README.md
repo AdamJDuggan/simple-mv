@@ -22,7 +22,7 @@ The aim of this task is to create a simple enquiry management system. This will 
 If you would like to take this further you can:
 
 ### Edit an enquiry
-- Add a link in the table view to 'edit' existing enquiry (Think about what the URL structure for this will need to be)
+- Add a link in the table view to 'edit' an existing enquiry (Think about what the URL structure for this will need to be)
 - The 'edit' link should open a form with all the existing enquiry data pre-populated in the fields. The user can update any of these and submit. This action will update the database record for that enquiry.
 - Upon submission the user should be taken back to the list of enquiries with a confirmation message displayed. (Think about how you can let the view know to render this message)
 
@@ -40,7 +40,7 @@ The routing is handled by the index.php file. Existing routes are:
 - /render-enquiry-table
 - /render-edit-enquiry-form
 
-If you complete the bonus task an addition route will need to be created to process the edit.
+If you complete the bonus task an additional route will need to be created to process the updating of the enquiry.
 
 ## Database
 An SQL file is included inside the database folder to create the enquiry table.
@@ -50,7 +50,9 @@ Database connection details are stored in the config.php file in the root.
 ## Controllers
 There is a single controller which handles all requests. You should add your code into the processEnquiryForm() and renderEnquiryTable() methods here.
 
-NOTE: Currently there is a call to a testConnection() method on the model inside this - this may be helpful when setting up your database.
+If you complete the bonus task you will also need to modify the renderEditEnquiry() method and create a new method for processing the update. 
+
+NOTE: Currently there is a call to a testConnection() method on the Enquiry model inside the processEnquiryForm() method - this may be helpful when setting up your database.
 
 ## Models
 There is an Enquiry model set up - this has a testConnection() method and placeholders for:
