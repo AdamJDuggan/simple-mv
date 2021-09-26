@@ -6,8 +6,8 @@ $email = [
 ];
 
 $database = [
-    'hostname' => 'localhost',
-    'database' => 'simplemvc',
+    'hostname' => '127.0.0.1',
+    'database' => 'enquiry',
     'username' => 'root',
-    'password' => 'root'
+    'password' => '123456'
 ];

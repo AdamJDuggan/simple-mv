@@ -1,8 +1,9 @@
 <?php
 
 require(__DIR__ . '/../helpers/ViewHelper.php');
-require(__DIR__ . '/../models/Enquiry.php');
 require(__DIR__ . '/../config.php');
+require(__DIR__ . '/../models/Enquiry.php');
+
 
 class MainController {
 
@@ -88,6 +89,10 @@ class MainController {
      * @return string rendered view
      */
     public function renderEnquiryTable() {
+        
+        $enquiryModel = new Enquiry();
+        $test = $enquiryModel->testConnection();
+        print_r($test);
         return ViewHelper::get('enquiry-table');
     }
 

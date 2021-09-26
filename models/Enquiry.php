@@ -1,10 +1,11 @@
 <?php
 
-require(__DIR__ . '/../helpers/DataBaseHelper.php');
+// Needed instead of 'require' to run on linux. Fix permissions when more time
+require($_SERVER['DOCUMENT_ROOT']."/helpers/DatabaseHelper.php");
 
 class Enquiry
 {
-    protected $tableName = 'enquiry';
+    protected $tableName = 'enquiries';
 
     /**
      * For de-bugging purposes
