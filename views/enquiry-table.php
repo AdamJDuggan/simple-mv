@@ -21,7 +21,7 @@
         <td> <?php echo $enquiry["lastName"]; ?></td>
         <td> <?php echo $enquiry["email"]; ?></td>
         <td class="truncate"> <?php echo $enquiry["enquiry"]; ?></td>
-      <td><form method="post" action="/process-edit-enquiry">
+      <td><form method="post" action="/render-edit-enquiry-form">
       <input type="hidden" value="<?php echo $enquiry["id"]; ?>" name="id"/>
       <button class="btn btn-danger">Edit</button></form></td>
       </tr>

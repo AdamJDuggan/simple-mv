@@ -141,20 +141,34 @@ class MainController {
      * edit so you can use a GET param
      * to pass this in: e.g. /render-edit-enquiry-form?id=1
      */
-    public function processEditEnquiry() {
+    public function renderEditEnquiry() {
         $id = $_POST['id'];
         $enquiryModel = new Enquiry();
         $response = $enquiryModel->get($id);
         $viewVars = [
             'title' => "Edit enquiry",
-            "id" => $response->id,
+            "id" => $response["id"],
             "firstName" => $response["firstName"],
             "lastName" => $response["lastName"],
             "email" => $response["email"],
             "enquiry" => $response["enquiry"],
         ];
         return ViewHelper::get('edit-enquiry-form', $viewVars);
-        //die('Render Edit Enquiry Form for entry');
+    }
+
+    public function processEditEnquiry() { 
+        $enquiryModel = new Enquiry();
+        $id =  $_POST["id"];
+        $firstName = $_POST["firstName"];
+        $lastName = $_POST["lastName"];
+        $email = $_POST["email"];
+        $enquiry = $_POST["enquiry"];
+        $response = $enquiryModel->update($id, $firstName, $lastName, $email, $enquiry);
+         $viewVars = [
+            'title' => 'This is the homepage',
+            'intro' => 'Your enquiry has been successfully updated'
+        ];
+       return ViewHelper::get('home', $viewVars);
     }
 
 

@@ -34,10 +34,15 @@ class Enquiry
      * @param int $id
      * @param array $props
      */
-    public function update(int $id, array $props)
+    public function update($id, $firstName, $lastName, $email, $enquiry)
     {
-        return null;
+       
+        $connection = DataBaseHelper::getConnection();
+        $query = "UPDATE `{$this->tableName}` SET firstName = '$firstName', lastName = '$lastName', email = '$email', enquiry = '$enquiry' WHERE id = '$id'";
+        $result = DataBaseHelper::executeQuery($connection, $query);
+        return $result;
     }
+    
 
     /**
      * Get a single enquiry record
