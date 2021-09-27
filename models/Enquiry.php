@@ -20,9 +20,12 @@ class Enquiry
     /**
      * Create a new enquiry records
      */
-    public function create(array $props)
+    public function create($firstName, $lastName, $email, $enquiry)
     {
-        return null;
+        $connection = DataBaseHelper::getConnection();
+        $query = "INSERT INTO enquiries(firstName, lastName,email,enquiry ) VALUES('$firstName', '$lastName', '$email', '$enquiry')";
+        $result = DataBaseHelper::getLastId($connection, $query);
+        return $result;
     }
 
     /**
@@ -51,7 +54,10 @@ class Enquiry
      */
     public function all()
     {
-        return null;
+        $connection = DataBaseHelper::getConnection();
+        $query = "SELECT * FROM `{$this->tableName}`";
+        $result = DataBaseHelper::executeQuery($connection, $query);
+        return $result;
     }
 
     /**

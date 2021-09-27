@@ -24,4 +24,14 @@ class DataBaseHelper
             return $result;
         }
     }
+     public static function getLastId($connection, $query)
+    {
+        mysqli_query($connection, $query);
+        $result = mysqli_insert_id($connection);
+        if(!$result) {
+            return 'Query error: ' . mysqli_error($connection);
+        } else {
+            return $result;
+        }
+    }
 }

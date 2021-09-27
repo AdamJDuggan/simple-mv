@@ -61,9 +61,9 @@ class MainController {
      * It should then provide from feedback
      * to the user
      */
-    public function processEnquiryForm() {
+    public function processEnquiryForm() { 
         $enquiryModel = new Enquiry();
-
+        
         // Test the DB connection
         //
         // Note - whilst this test
@@ -73,12 +73,41 @@ class MainController {
         // you should *never* render
         // any HTML in a controller,
         // this is the job of a view
-        $test = $enquiryModel->testConnection();
-        echo('DB Connection test successfuly - ' . $test->num_rows . ' rows returned<br />');
+        // echo('DB Connection test successfuly - ' . $test->num_rows . ' rows returned<br />');
+        $firstName = $_POST["firstName"];
+        $lastName = $_POST["lastName"];
+        $email = $_POST["email"];
+        $enquiry = $_POST["enquiry"];
+        $response = $enquiryModel->create($firstName, $lastName, $email, $enquiry);
+        $viewVars = [
+            'id' => $response,
+            'firstName' => $firstName,
+            'lastName' => $response,
+            'enquiry' => $enquiry,
 
-        // Get the email recipients
-        $recipients = $GLOBALS['email'];
-        var_dump($recipients);
+        ];
+        $email = $GLOBALS['email'];
+        $to = $email["submissionToAddress"];
+        $subject = "Enquiry confirmation";
+        $message = "
+        <html>
+        <head>
+        <title>New enquiry</title>
+        </head>
+        <body>
+        <p>Id: $response</p>
+        <p>First name: $firstName</p>
+        <p>Last name: $firstName</p>
+        <p>Email: $firstName</p>
+        <p>Enquiry: $firstName</p>
+        </body>
+        </html>
+        ";
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+        $headers .= 'Cc:'. $email["submissionCcAddress"] . "\r\n";
+        mail($to,$subject,$message,$headers);
+        return ViewHelper::get('process-enquiry-form', $viewVars);
     }
 
     /**
@@ -91,9 +120,11 @@ class MainController {
     public function renderEnquiryTable() {
         
         $enquiryModel = new Enquiry();
-        $test = $enquiryModel->testConnection();
-        print_r($test);
-        return ViewHelper::get('enquiry-table');
+        $enquiries = $enquiryModel->all();
+        $viewVars = [
+            'enquiries' => $enquiries,
+        ];
+        return ViewHelper::get('enquiry-table', $viewVars);
     }
 
     /**
