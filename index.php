@@ -1,7 +1,4 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 
 require __DIR__ . '/controllers/MainController.php';
 
@@ -31,6 +28,9 @@ switch ($request) {
         break;
 
     // Additional routes can be added here
+     case '/process-edit-enquiry':
+        echo $controller->processEditEnquiry();
+        break;
 
     default:
         http_response_code(404);

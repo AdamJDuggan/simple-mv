@@ -46,7 +46,11 @@ class Enquiry
      */
     public function get(int $id)
     {
-        return null;
+        $connection = DataBaseHelper::getConnection();
+        $query = "SELECT * FROM `{$this->tableName}` WHERE id = ". $id;
+        $result = DataBaseHelper::executeQuery($connection, $query);
+        $enquiry = mysqli_fetch_assoc($result);
+        return $enquiry;
     }
 
     /**

@@ -31,6 +31,7 @@ class MainController {
      * @return string rendered view
      */
     public function renderError ($error) {
+    
         return ViewHelper::get($error);
     }
 
@@ -42,7 +43,10 @@ class MainController {
      * @return string rendered view
      */
     public function renderEnquiryForm () {
-        return ViewHelper::get('enquiry-form');
+           $viewVars = [
+            'title' => 'Please enter an enquiry',
+        ];
+        return ViewHelper::get('enquiry-form', $viewVars);
     }
 
     /**
@@ -79,14 +83,16 @@ class MainController {
         $email = $_POST["email"];
         $enquiry = $_POST["enquiry"];
         $response = $enquiryModel->create($firstName, $lastName, $email, $enquiry);
+        $email = $GLOBALS['email'];
         $viewVars = [
             'id' => $response,
             'firstName' => $firstName,
             'lastName' => $response,
             'enquiry' => $enquiry,
+            'title' => "Thank you",
+            'confirmMessage' => 'Your enquiry has been submitted. <br/> A confirmation email has been sent to <strong>' .$email["submissionCcAddress"]. "</strong>.<br/>The unique database id for this enquiry is <strong>". $response. "</strong>."
 
         ];
-        $email = $GLOBALS['email'];
         $to = $email["submissionToAddress"];
         $subject = "Enquiry confirmation";
         $message = "
@@ -122,6 +128,7 @@ class MainController {
         $enquiryModel = new Enquiry();
         $enquiries = $enquiryModel->all();
         $viewVars = [
+            'title' => "Enquiries",
             'enquiries' => $enquiries,
         ];
         return ViewHelper::get('enquiry-table', $viewVars);
@@ -134,8 +141,20 @@ class MainController {
      * edit so you can use a GET param
      * to pass this in: e.g. /render-edit-enquiry-form?id=1
      */
-    public function renderEditEnquiry() {
-        die('Render Edit Enquiry Form for entry');
+    public function processEditEnquiry() {
+        $id = $_POST['id'];
+        $enquiryModel = new Enquiry();
+        $response = $enquiryModel->get($id);
+        $viewVars = [
+            'title' => "Edit enquiry",
+            "id" => $response->id,
+            "firstName" => $response["firstName"],
+            "lastName" => $response["lastName"],
+            "email" => $response["email"],
+            "enquiry" => $response["enquiry"],
+        ];
+        return ViewHelper::get('edit-enquiry-form', $viewVars);
+        //die('Render Edit Enquiry Form for entry');
     }
 
 
