@@ -90,7 +90,7 @@ class MainController {
             'lastName' => $response,
             'enquiry' => $enquiry,
             'title' => "Thank you",
-            'confirmMessage' => 'Your enquiry has been submitted. <br/> A confirmation email has been sent to <strong>' .$email["submissionCcAddress"]. "</strong>.<br/>The unique database id for this enquiry is <strong>". $response. "</strong>."
+            'intro' => 'Your enquiry has been submitted. <br/> A confirmation email has been sent to <strong>' .$email["submissionCcAddress"]. "</strong>.<br/>The unique database id for this enquiry is <strong>". $response. "</strong>."
 
         ];
         $to = $email["submissionToAddress"];
@@ -113,7 +113,7 @@ class MainController {
         $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
         $headers .= 'Cc:'. $email["submissionCcAddress"] . "\r\n";
         mail($to,$subject,$message,$headers);
-        return ViewHelper::get('process-enquiry-form', $viewVars);
+        return ViewHelper::get('home', $viewVars);
     }
 
     /**
@@ -165,8 +165,8 @@ class MainController {
         $enquiry = $_POST["enquiry"];
         $response = $enquiryModel->update($id, $firstName, $lastName, $email, $enquiry);
          $viewVars = [
-            'title' => 'This is the homepage',
-            'intro' => 'Your enquiry has been successfully updated'
+            'title' => 'Thank you',
+            'intro' => 'Your enquiry has been successfully updated.'
         ];
        return ViewHelper::get('home', $viewVars);
     }

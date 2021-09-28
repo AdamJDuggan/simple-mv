@@ -7,7 +7,7 @@ $email = [
 
 $database = [
     'hostname' => '127.0.0.1',
-    'database' => 'enquiry',
+    'database' => 'simple-mvc',
     'username' => 'root',
     'password' => '123456'
 ];
