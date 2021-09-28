@@ -79,7 +79,6 @@ class Enquiry
         $connection = DataBaseHelper::getConnection();
         $query = "DELETE FROM `{$this->tableName}` WHERE id = ". $id;
         $result = DataBaseHelper::executeQuery($connection, $query);
-        print_r($result);
         return $result;
     }
 }
