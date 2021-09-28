@@ -11,7 +11,7 @@
       <th scope="col">Email</th>
       <th scope="col">Enquiry</th>
       <th scope="col">Edit</th>
-
+      <th scope="col">Delete</th>
     </tr>
   </thead>
   <tbody>
@@ -23,7 +23,10 @@
         <td class="truncate"> <?php echo $enquiry["enquiry"]; ?></td>
       <td><form method="post" action="/render-edit-enquiry-form">
       <input type="hidden" value="<?php echo $enquiry["id"]; ?>" name="id"/>
-      <button class="btn btn-danger">Edit</button></form></td>
+      <button class="btn btn-info">Edit</button></form></td>
+      <td><form method="post" action="/process-delete-enquiry">
+      <input type="hidden" value="<?php echo $enquiry["id"]; ?>" name="id"/>
+      <button class="btn btn-danger">Delete</button></form></td>
       </tr>
       <?php endforeach; ?>
   </tbody>

@@ -171,5 +171,16 @@ class MainController {
        return ViewHelper::get('home', $viewVars);
     }
 
+    public function processDeleteEnquiry() { 
+        $enquiryModel = new Enquiry();
+        $id =  $_POST["id"];
+        $response = $enquiryModel->delete($id);
+        $viewVars = [
+            'title' => 'Thank you',
+            'intro' => 'The enquiry has been deleted.'
+        ];
+       return ViewHelper::get('home', $viewVars);
+    }
+
 
 }

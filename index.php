@@ -31,6 +31,9 @@ switch ($request) {
      case '/process-edit-enquiry':
         echo $controller->processEditEnquiry();
         break;
+    case '/process-delete-enquiry':
+        echo $controller->processDeleteEnquiry();
+        break;
 
     default:
         http_response_code(404);
