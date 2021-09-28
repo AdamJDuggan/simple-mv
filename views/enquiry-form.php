@@ -5,16 +5,16 @@
 <div class="container">
     <form method="post" action="/process-enquiry-form">
         <div class="form-group">
-            <label for="firstName"  >First name</label>
-            <input type="text" name="firstName" class="form-control">
+            <label for="first_name"  >First name</label>
+            <input type="text" name="first_name" class="form-control">
         </div>
         <div class="form-group">
-            <label for="lastName" >Last name</label>
-            <input type="text" name="lastName" class="form-control">
+            <label for="last_name" >Last name</label>
+            <input type="text" name="last_name" class="form-control">
         </div>
         <div class="form-group">
             <label for="email" >Email</label>
-            <input type="email" name="email"  class="form-control">
+            <input type="email" name="email_address"  class="form-control">
         </div>
         <div class="form-group">
             <label for="enquiry" >Enquiry</label>

@@ -20,10 +20,10 @@ class Enquiry
     /**
      * Create a new enquiry records
      */
-    public function create($firstName, $lastName, $email, $enquiry)
+    public function create($first_name, $last_name, $email_address, $enquiry)
     {
         $connection = DataBaseHelper::getConnection();
-        $query = "INSERT INTO enquiries(firstName, lastName,email,enquiry ) VALUES('$firstName', '$lastName', '$email', '$enquiry')";
+        $query = "INSERT INTO enquiries(first_name, last_name,email_address,enquiry ) VALUES('$first_name', '$last_name', '$email_address', '$enquiry')";
         $result = DataBaseHelper::getLastId($connection, $query);
         return $result;
     }
@@ -34,11 +34,11 @@ class Enquiry
      * @param int $id
      * @param array $props
      */
-    public function update($id, $firstName, $lastName, $email, $enquiry)
+    public function update($id, $first_name, $last_name, $email_address, $enquiry)
     {
        
         $connection = DataBaseHelper::getConnection();
-        $query = "UPDATE `{$this->tableName}` SET firstName = '$firstName', lastName = '$lastName', email = '$email', enquiry = '$enquiry' WHERE id = '$id'";
+        $query = "UPDATE `{$this->tableName}` SET first_name = '$first_name', last_name = '$last_name', email_address = '$email_address', enquiry = '$enquiry' WHERE id = '$id'";
         $result = DataBaseHelper::executeQuery($connection, $query);
         return $result;
     }

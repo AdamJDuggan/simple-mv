@@ -17,9 +17,9 @@
   <tbody>
      <?php foreach($vars['enquiries'] as $enquiry): ?>  
       <tr >
-        <td> <?php echo $enquiry["firstName"]; ?></td>
-        <td> <?php echo $enquiry["lastName"]; ?></td>
-        <td> <?php echo $enquiry["email"]; ?></td>
+        <td> <?php echo $enquiry["first_name"]; ?></td>
+        <td> <?php echo $enquiry["last_name"]; ?></td>
+        <td> <?php echo $enquiry["email_address"]; ?></td>
         <td class="truncate"> <?php echo $enquiry["enquiry"]; ?></td>
       <td><form method="post" action="/render-edit-enquiry-form">
       <input type="hidden" value="<?php echo $enquiry["id"]; ?>" name="id"/>

@@ -6,16 +6,16 @@
 
     <form method="post" action="/process-edit-enquiry">
         <div class="form-group">
-            <label for="firstName"  >First name</label>
-            <input value="<?php echo $vars["firstName"]; ?>" type="text" name="firstName" class="form-control">
+            <label for="first_name"  >First name</label>
+            <input value="<?php echo $vars["first_name"]; ?>" type="text" name="first_name" class="form-control">
         </div>
         <div class="form-group">
-            <label for="lastName" >Last name</label>
-            <input value="<?php echo $vars["lastName"]; ?>" type="text" name="lastName" class="form-control">
+            <label for="last_name" >Last name</label>
+            <input value="<?php echo $vars["last_name"]; ?>" type="text" name="last_name" class="form-control">
         </div>
         <div class="form-group">
             <label for="email" >Email</label>
-            <input value="<?php echo $vars["email"]; ?>" type="email" name="email"  class="form-control">
+            <input value="<?php echo $vars["email_address"]; ?>" type="email" name="email_address"  class="form-control">
         </div>
         <div class="form-group">
             <label for="enquiry" >Enquiry</label>

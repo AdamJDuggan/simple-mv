@@ -78,16 +78,16 @@ class MainController {
         // any HTML in a controller,
         // this is the job of a view
         // echo('DB Connection test successfuly - ' . $test->num_rows . ' rows returned<br />');
-        $firstName = $_POST["firstName"];
-        $lastName = $_POST["lastName"];
-        $email = $_POST["email"];
+        $first_name = $_POST["first_name"];
+        $last_name = $_POST["last_name"];
+        $email_address = $_POST["email_address"];
         $enquiry = $_POST["enquiry"];
-        $response = $enquiryModel->create($firstName, $lastName, $email, $enquiry);
+        $response = $enquiryModel->create($first_name, $last_name, $email_address, $enquiry);
         $email = $GLOBALS['email'];
         $viewVars = [
             'id' => $response,
-            'firstName' => $firstName,
-            'lastName' => $response,
+            'first_name' => $first_name,
+            'last_name' => $response,
             'enquiry' => $enquiry,
             'title' => "Thank you",
             'intro' => 'Your enquiry has been submitted. <br/> A confirmation email has been sent to <strong>' .$email["submissionCcAddress"]. "</strong>.<br/>The unique database id for this enquiry is <strong>". $response. "</strong>."
@@ -102,10 +102,10 @@ class MainController {
         </head>
         <body>
         <p>Id: $response</p>
-        <p>First name: $firstName</p>
-        <p>Last name: $firstName</p>
-        <p>Email: $firstName</p>
-        <p>Enquiry: $firstName</p>
+        <p>First name: $first_name</p>
+        <p>Last name: $last_name</p>
+        <p>Email: $email_address</p>
+        <p>Enquiry: $enquiry</p>
         </body>
         </html>
         ";
@@ -148,9 +148,9 @@ class MainController {
         $viewVars = [
             'title' => "Edit enquiry",
             "id" => $response["id"],
-            "firstName" => $response["firstName"],
-            "lastName" => $response["lastName"],
-            "email" => $response["email"],
+            "first_name" => $response["first_name"],
+            "last_name" => $response["last_name"],
+            "email_address" => $response["email_address"],
             "enquiry" => $response["enquiry"],
         ];
         return ViewHelper::get('edit-enquiry-form', $viewVars);
@@ -159,11 +159,11 @@ class MainController {
     public function processEditEnquiry() { 
         $enquiryModel = new Enquiry();
         $id =  $_POST["id"];
-        $firstName = $_POST["firstName"];
-        $lastName = $_POST["lastName"];
-        $email = $_POST["email"];
+        $first_name = $_POST["first_name"];
+        $last_name = $_POST["last_name"];
+        $email_address = $_POST["email_address"];
         $enquiry = $_POST["enquiry"];
-        $response = $enquiryModel->update($id, $firstName, $lastName, $email, $enquiry);
+        $response = $enquiryModel->update($id, $first_name, $last_name, $email_address, $enquiry);
          $viewVars = [
             'title' => 'Thank you',
             'intro' => 'Your enquiry has been successfully updated.'
